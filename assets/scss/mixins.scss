@@ -1,0 +1,31 @@
+// Insert custom breakpoint with custom max viewport value.
+@mixin media-max($breakpoint, $orientation: false) {
+  @if $orientation {
+    @media screen and (max-width: #{$breakpoint}px) and (orientation: $orientation) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: #{$breakpoint}px) {
+      @content;
+    }
+  }
+}
+
+// Add styles for :hover/:focus state
+@mixin on-event {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+// Set width and height for element
+@mixin size($width, $height: $width) {
+  height: $height;
+  width: $width;
+}
+
+// Set transition for element with settings
+@mixin trs($prop: all, $duration: 250ms, $easing: ease-in-out, $delay: 0ms) {
+  transition: $prop $duration $easing $delay;
+}

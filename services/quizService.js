@@ -1,12 +1,11 @@
-// import axios from 'axios'
-import { useFetch } from './index'
+import axios from 'axios'
 
 export default {
-  getCategories() {
-    return useFetch('https://the-trivia-api.com/api/categories')
+  async getCategories() {
+    return (await axios.get('https://the-trivia-api.com/api/categories')).data
   },
 
   async getQuestions(param) {
-    return (await useFetch(`https://the-trivia-api.com/api/questions?limit=5&${param}`))
+    return (await axios.get(`https://the-trivia-api.com/api/questions?limit=5&${param}`)).data
   }
 }
